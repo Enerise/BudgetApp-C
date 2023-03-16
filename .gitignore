@@ -2,3 +2,4 @@ bin/
 obj/
 Plan/
 BudgetApp.*
+main.o
