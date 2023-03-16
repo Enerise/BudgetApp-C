@@ -1,6 +1,11 @@
 #include "PersonalBudget.h"
 #include "AuxiliaryMethods.h"
 
+void PersonalBudget::registerUser()
+{
+    userManager.registerUser();
+}
+
 char PersonalBudget::selectOptionFromMainMenu()
 {
     char choice;

@@ -13,7 +13,7 @@ int main() {
             choice = personalBudget.selectOptionFromMainMenu();
             switch(choice) {
             case '1':
-                //personalBudget.rejestracjaUzytkownika();
+                personalBudget.registerUser();
                 break;
             case '2':
                 //personalBudget.logowanieUzytkownika();
