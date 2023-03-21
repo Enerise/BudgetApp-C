@@ -1,3 +1,6 @@
+#ifndef USERMANAGER_H
+#define USERMANAGER_H
+
 #include <iostream>
 #include <vector>
 #include <windows.h>
@@ -26,3 +29,5 @@ class UserManager
     };
         void registerUser();
 };
+
+#endif

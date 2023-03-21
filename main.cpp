@@ -6,7 +6,7 @@
 using namespace std;
 
 int main() {
-    PersonalBudget personalBudget ("Users.txt"); //, "Adresaci.txt");
+    PersonalBudget personalBudget ("Users.xml"); //, "Adresaci.txt");
     char choice;
     while(true) {
         //if(ksiazkaAdresowa.pobierzIdZalogowanegoUzytkownika() == 0) {

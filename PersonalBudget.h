@@ -1,3 +1,6 @@
+#ifndef PERSONALBUDGET_H
+#define PERSONALBUDGET_H
+
 #include <iostream>
 
 #include "UserManager.h"
@@ -16,3 +19,5 @@ PersonalBudget (string nazwaPlikuZUzytkownikami):
     void registerUser();
     char selectOptionFromMainMenu();
 };
+
+#endif

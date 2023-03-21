@@ -4,7 +4,7 @@ void UserManager::registerUser(){
     User user = enterNewUserData();
 
     users.push_back(user);
-    fileWithUsers.dopiszUzytkownikaDoPliku(user);
+    fileWithUsers.addUserToFile(user);
 
     cout << endl << "Konto zalozono pomyslnie" << endl << endl;
     system("pause");

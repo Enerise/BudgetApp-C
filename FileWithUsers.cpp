@@ -1,14 +1,36 @@
 #include "FileWithUsers.h"
 
-void FileWithUsers::dopiszUzytkownikaDoPliku(User uzytkownik)
+void FileWithUsers::addUserToFile(User user)
 {
-    fstream plikTekstowy;
+   CMarkup xml;
+
+    bool fileExists = xml.Load( NAME_FILE_WITH_USERS );
+
+    if (!fileExists)
+    {
+        xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+        xml.AddElem("Users");
+    }
+
+    xml.FindElem();
+    xml.IntoElem();
+    xml.AddElem("User");
+    xml.IntoElem();
+    xml.AddElem("userId", user.getUserId());
+    xml.AddElem("login", user.getLogin());
+    xml.AddElem("password", user.getPassword());
+    xml.AddElem("name", user.getUserName());
+    xml.AddElem("surname", user.getUserSurname());
+
+    xml.Save("users.xml");
+
+    /*fstream plikTekstowy;
     string liniaZDanymiUzytkownika = "";
     plikTekstowy.open(nazwaPlikuZUzytkownikami1.c_str(), ios::app);
 
     if (plikTekstowy.good())
     {
-        liniaZDanymiUzytkownika = zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(uzytkownik);
+        liniaZDanymiUzytkownika = zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(user);
 
         if (czyPlikJestPusty())
         {
@@ -23,28 +45,5 @@ void FileWithUsers::dopiszUzytkownikaDoPliku(User uzytkownik)
         cout << "Nie udalo sie otworzyc pliku " << nazwaPlikuZUzytkownikami1 << " i zapisac w nim danych." << endl;
     plikTekstowy.close();
 }
-
-string FileWithUsers::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(User uzytkownik)
-{
-    string liniaZDanymiUzytkownika = "";
-    liniaZDanymiUzytkownika += AuxiliaryMethods::convertIntegerToString(uzytkownik.getUserId())+ '|';
-    liniaZDanymiUzytkownika += uzytkownik.getLogin() + '|';
-    liniaZDanymiUzytkownika += uzytkownik.getPassword() + '|';
-
-    return liniaZDanymiUzytkownika;
-}
-
-bool FileWithUsers::czyPlikJestPusty() {
-    bool pusty = true;
-    fstream plikTekstowy;
-    plikTekstowy.open(nazwaPlikuZUzytkownikami1.c_str(), ios::app);
-
-    if (plikTekstowy.good() == true) {
-        plikTekstowy.seekg(0, ios::end);
-        if (plikTekstowy.tellg() != 0)
-            pusty = false;
-    }
-
-    plikTekstowy.close();
-    return pusty;
+*/
 }

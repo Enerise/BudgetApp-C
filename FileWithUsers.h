@@ -1,3 +1,6 @@
+#ifndef FILEWITHUSERS_H
+#define FILEWITHUSERS_H
+
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -5,21 +8,21 @@
 
 #include "User.h"
 #include "AuxiliaryMethods.h"
+#include "Markup.h"
 
 using namespace std;
 
 class FileWithUsers
 {
-    vector <User> uzytkownicy;
-    string zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(User uzytkownik);
-    string nazwaPlikuZUzytkownikami1;
-    bool czyPlikJestPusty();
+    vector <User> users;
+    const string NAME_FILE_WITH_USERS;
 
 public:
-    FileWithUsers(string nazwaPlikuZUzytkownikami) //: nazwaPlikuZUzytkownikami1(nazwaPlikuZUzytkownikami)
+    FileWithUsers(string nameFileWithUsers) : NAME_FILE_WITH_USERS(nameFileWithUsers)
     {
-        nazwaPlikuZUzytkownikami1 = nazwaPlikuZUzytkownikami;
     }
-    void dopiszUzytkownikaDoPliku(User uzytkownik);
-    //void zapiszWszystkichUzytkownikowDoPliku(vector <Uzytkownik> uzytkownicy);
+    void addUserToFile(User user);
+    //void zapiszWszystkichUzytkownikowDoPliku(vector <Uzytkownik> users);
 };
+
+#endif
