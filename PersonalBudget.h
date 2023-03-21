@@ -13,11 +13,13 @@ class PersonalBudget
     UserManager userManager;
 
 public:
-PersonalBudget (string nazwaPlikuZUzytkownikami):
-    userManager(nazwaPlikuZUzytkownikami){
+PersonalBudget (string nameFileWithUsers): userManager(nameFileWithUsers){
     };
     void registerUser();
+    void loginUser();
     char selectOptionFromMainMenu();
+    void showAllUsers();
+    int getLoggedInUserId();
 };
 
 #endif

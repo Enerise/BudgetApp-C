@@ -9,14 +9,16 @@ int main() {
     PersonalBudget personalBudget ("Users.xml"); //, "Adresaci.txt");
     char choice;
     while(true) {
-        //if(ksiazkaAdresowa.pobierzIdZalogowanegoUzytkownika() == 0) {
+        //if(personalBudget.getLoggedInUserId() == 0) {
             choice = personalBudget.selectOptionFromMainMenu();
             switch(choice) {
             case '1':
                 personalBudget.registerUser();
                 break;
             case '2':
-                //personalBudget.logowanieUzytkownika();
+                personalBudget.loginUser();
+                personalBudget.showAllUsers();
+                system("pause");
                 break;
             case '9':
                 exit(0);

@@ -23,27 +23,43 @@ void FileWithUsers::addUserToFile(User user)
     xml.AddElem("surname", user.getUserSurname());
 
     xml.Save("users.xml");
+}
 
-    /*fstream plikTekstowy;
-    string liniaZDanymiUzytkownika = "";
-    plikTekstowy.open(nazwaPlikuZUzytkownikami1.c_str(), ios::app);
+vector <User> FileWithUsers::loadUsersFromFile()
+{
+    User user;
+    vector <User> users;
+    int userId;
+    string login, password, userName, userSurname;
 
-    if (plikTekstowy.good())
+    CMarkup xml;
+    bool fileExists = xml.Load(NAME_FILE_WITH_USERS);
+
+ if (fileExists)
     {
-        liniaZDanymiUzytkownika = zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(user);
+        xml.FindElem();
+        xml.IntoElem();
+        while (xml.FindElem("User")) {
+            xml.IntoElem();
+            xml.FindElem( "userId");
+            userId = atoi(xml.GetData().c_str());//atoi( MCD_2PCSZ(xml.GetData()));
+            user.setUserId(userId);
+            xml.FindElem( "login");
+            login = xml.GetData();
+            user.setLogin(login);
+            xml.FindElem( "password");
+            password = xml.GetData();
+            user.setPassword(password);
+            xml.FindElem( "name");
+            userName = xml.GetData();
+            user.setUserName(userName);
+            xml.FindElem( "surname");
+            userSurname = xml.GetData();
+            user.setUserSurname(userSurname);
+            users.push_back(user);
 
-        if (czyPlikJestPusty())
-        {
-            plikTekstowy << liniaZDanymiUzytkownika;
-        }
-        else
-        {
-            plikTekstowy << endl << liniaZDanymiUzytkownika ;
+            xml.OutOfElem();
         }
     }
-    else
-        cout << "Nie udalo sie otworzyc pliku " << nazwaPlikuZUzytkownikami1 << " i zapisac w nim danych." << endl;
-    plikTekstowy.close();
-}
-*/
+    return users;
 }

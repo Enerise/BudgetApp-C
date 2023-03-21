@@ -6,6 +6,16 @@ void PersonalBudget::registerUser()
     userManager.registerUser();
 }
 
+void PersonalBudget::loginUser()
+{
+    userManager.loginUser();
+}
+
+void PersonalBudget::showAllUsers()
+{
+    userManager.showAllUsers();
+}
+
 char PersonalBudget::selectOptionFromMainMenu()
 {
     char choice;
@@ -21,4 +31,9 @@ char PersonalBudget::selectOptionFromMainMenu()
     choice = AuxiliaryMethods::loadChar();
 
     return choice;
+}
+
+int PersonalBudget::getLoggedInUserId()
+{
+    return userManager.getLoggedInUserId();
 }

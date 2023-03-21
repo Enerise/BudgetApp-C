@@ -22,6 +22,7 @@ public:
     {
     }
     void addUserToFile(User user);
+    vector <User> loadUsersFromFile();
     //void zapiszWszystkichUzytkownikowDoPliku(vector <Uzytkownik> users);
 };
 
