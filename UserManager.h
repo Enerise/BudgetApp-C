@@ -1,3 +1,6 @@
+#ifndef USERMANAGER_H
+#define USERMANAGER_H
+
 #include <iostream>
 #include <vector>
 #include <windows.h>
@@ -5,19 +8,30 @@
 #include <sstream>
 
 #include "User.h"
+#include "FileWithUsers.h"
 
 using namespace std;
 
 class UserManager
 {
-    //int idZalogowanegoUzytkownika;
+    int loggedInUserId;
     vector <User> users;
 
     User enterNewUserData();
     int getNewUserId();
     bool loginExists(string login);
-    //PlikZUzytkownikami plikZUzytkownikami;
+    FileWithUsers fileWithUsers;
 
     public:
+        UserManager(string nameFileWithUsers) : fileWithUsers(nameFileWithUsers) {
+        loggedInUserId = 0;
+        users = fileWithUsers.loadUsersFromFile();
+    };
         void registerUser();
+        void loginUser();
+        void showAllUsers();
+
+        int getLoggedInUserId();
 };
+
+#endif

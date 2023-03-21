@@ -4,10 +4,43 @@ void UserManager::registerUser(){
     User user = enterNewUserData();
 
     users.push_back(user);
-    //plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);
+    fileWithUsers.addUserToFile(user);
 
     cout << endl << "Konto zalozono pomyslnie" << endl << endl;
     system("pause");
+}
+
+void UserManager::loginUser()
+{
+    User user;
+    string login = "", password = "";
+
+    cout << endl << "Podaj login: ";
+    login = AuxiliaryMethods::loadLine();
+
+    vector <User>::iterator itr = users.begin();
+    while (itr != users.end()){
+        if (itr -> getLogin() == login){
+            for (int numberOfAttempts = 3; numberOfAttempts > 0; numberOfAttempts--){
+                cout << "Podaj haslo. Pozostalo prob: " << numberOfAttempts << ": ";
+                password = AuxiliaryMethods::loadLine();
+
+                if (itr -> getPassword() == password){
+                    cout << endl << "Zalogowales sie." << endl << endl;
+                    system("pause");
+                    loggedInUserId = itr -> getUserId();
+                    return;
+                }
+            }
+            cout << "Wprowadzono 3 razy bledne haslo." << endl;
+            system("pause");
+            return;
+        }
+        itr++;
+    }
+    cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
+    system("pause");
+    return;
 }
 
 User UserManager::enterNewUserData()
@@ -62,4 +95,19 @@ bool UserManager::loginExists(string login)
         }
     }
     return false;
+}
+
+void UserManager::showAllUsers() {
+
+    for (int i = 0; i < users.size(); i++) {
+        cout << "User ID: " << users[i].getUserId() << endl;
+        cout << "Login: " << users[i].getLogin() << endl;
+        cout << "Password: " << users[i].getPassword() << endl;
+        cout << "User name: " << users[i].getUserName() << endl;
+        cout << "User surname: " << users[i].getUserSurname() << endl << endl;
+    }
+}
+
+int UserManager::getLoggedInUserId() {
+    return loggedInUserId;
 }
