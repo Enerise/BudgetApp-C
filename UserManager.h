@@ -33,6 +33,8 @@ class UserManager
         void showAllUsers();
         int logoutUser();
 
+        bool isUserLoggedIn();
+
         int getLoggedInUserId();
 };
 
