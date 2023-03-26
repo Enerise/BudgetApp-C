@@ -9,7 +9,7 @@ int main() {
     PersonalBudget personalBudget ("Users.xml"); //, "Adresaci.txt");
     char choice;
     while(true) {
-        //if(personalBudget.getLoggedInUserId() == 0) {
+        if(personalBudget.getLoggedInUserId() == 0) {
             choice = personalBudget.selectOptionFromMainMenu();
             switch(choice) {
             case '1':
@@ -17,8 +17,8 @@ int main() {
                 break;
             case '2':
                 personalBudget.loginUser();
-                personalBudget.showAllUsers();
-                system("pause");
+                //personalBudget.showAllUsers();
+                //system("pause");
                 break;
             case '9':
                 exit(0);
@@ -28,36 +28,36 @@ int main() {
                 system("pause");
                 break;
             }
-        } /*else {
-            wybor = ksiazkaAdresowa.wybierzOpcjeZMenuUzytkownika();
+        } else {
+            choice = personalBudget.selectOptionFromUserMenu();
 
-            switch(wybor) {
+            switch(choice) {
                 case '1':
-                    ksiazkaAdresowa.dodajAdresata();
+                   // ksiazkaAdresowa.dodajAdresata();
                     break;
                 case '2':
-                    ksiazkaAdresowa.wyszukajAdresatowPoImieniu();
+                   // ksiazkaAdresowa.wyszukajAdresatowPoImieniu();
                     break;
                 case '3':
-                    ksiazkaAdresowa.wyszukajAdresatowPoNazwisku();
+                   // ksiazkaAdresowa.wyszukajAdresatowPoNazwisku();
                     break;
                 case '4':
-                    ksiazkaAdresowa.wyswietlWszystkichAdresatow();
+                   // ksiazkaAdresowa.wyswietlWszystkichAdresatow();
                     break;
                 case '5':
-                    ksiazkaAdresowa.usunAdresata();
+                    //ksiazkaAdresowa.usunAdresata();
                     break;
                  case '6':
-                    ksiazkaAdresowa.edytujAdresata();
+                   // ksiazkaAdresowa.edytujAdresata();
                     break;
                 case '7':
-                    ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
+                    personalBudget.changePassword();
                     break;
                 case '8':
-                    ksiazkaAdresowa.wylogowanieUzytkownika();
+                    personalBudget.logoutUser();
                     break;
                 }
             }
-        }*/
+        }
     return 0;
 }

@@ -29,7 +29,9 @@ class UserManager
     };
         void registerUser();
         void loginUser();
+        void changePassword();
         void showAllUsers();
+        int logoutUser();
 
         int getLoggedInUserId();
 };

@@ -23,7 +23,7 @@ public:
     }
     void addUserToFile(User user);
     vector <User> loadUsersFromFile();
-    //void zapiszWszystkichUzytkownikowDoPliku(vector <Uzytkownik> users);
+    void changePasswordInFileUsers(int loggedUserId, string newPassword);
 };
 
 #endif
