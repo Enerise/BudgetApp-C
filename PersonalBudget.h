@@ -17,9 +17,14 @@ PersonalBudget (string nameFileWithUsers): userManager(nameFileWithUsers){
     };
     void registerUser();
     void loginUser();
-    char selectOptionFromMainMenu();
+    void changePassword();
+    void logoutUser();
+
     void showAllUsers();
     int getLoggedInUserId();
+
+    char selectOptionFromMainMenu();
+    char selectOptionFromUserMenu();
 };
 
 #endif

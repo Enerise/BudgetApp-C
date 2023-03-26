@@ -63,3 +63,31 @@ vector <User> FileWithUsers::loadUsersFromFile()
     }
     return users;
 }
+
+void FileWithUsers::changePasswordInFileUsers(int loggedUserId, string newPassword)
+{
+    CMarkup xml;
+    bool fileExists = xml.Load(NAME_FILE_WITH_USERS);
+    int userIdInFile;//size_t userIdInFile {}; //?
+    if (fileExists)
+    {
+        xml.FindElem("Users");
+        xml.IntoElem();
+        while (xml.FindElem("User"))
+        {
+            xml.IntoElem();
+            xml.FindElem("userId");
+            userIdInFile = AuxiliaryMethods::convertStringtoInteger(xml.GetData());
+            if (userIdInFile == loggedUserId)
+            {
+                xml.FindElem("password");
+                xml.SetData(newPassword);
+                break;
+            }
+            xml.OutOfElem();
+        }
+        xml.Save("Users.xml");
+    }
+    else
+        cout << "Nie mo¿na otworzyc pliku !" << endl;
+}

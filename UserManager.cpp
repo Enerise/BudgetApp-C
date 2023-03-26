@@ -97,6 +97,24 @@ bool UserManager::loginExists(string login)
     return false;
 }
 
+void UserManager::changePassword()
+{
+    string newPassword = "";
+    cout << "Podaj nowe haslo: ";
+    newPassword = AuxiliaryMethods::loadLine();
+
+    for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++)
+    {
+        if (itr -> getUserId() == loggedInUserId)
+        {
+            itr -> setPassword(newPassword);
+            cout << "Haslo zostalo zmienione." << endl << endl;
+            system("pause");
+        }
+    }
+    fileWithUsers.changePasswordInFileUsers(loggedInUserId, newPassword);
+}
+
 void UserManager::showAllUsers() {
 
     for (int i = 0; i < users.size(); i++) {
@@ -111,3 +129,11 @@ void UserManager::showAllUsers() {
 int UserManager::getLoggedInUserId() {
     return loggedInUserId;
 }
+
+int UserManager::logoutUser(){
+    loggedInUserId = 0;
+    cout << "Zostales pomyslnie wylogowany" << endl;
+    system("pause");
+    return loggedInUserId;
+}
+
