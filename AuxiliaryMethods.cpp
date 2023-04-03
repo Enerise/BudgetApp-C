@@ -17,17 +17,6 @@ string AuxiliaryMethods::loadLine()
     return entry;
 }
 
-/*string AuxiliaryMethods::pobierzLiczbe(string tekst, int pozycjaZnaku)
-{
-    string liczba = "";
-    while(isdigit(tekst[pozycjaZnaku]) == true)
-    {
-        liczba += tekst[pozycjaZnaku];
-        pozycjaZnaku ++;
-    }
-    return liczba;
-}*/
-
 string AuxiliaryMethods::changeFirstLetterForUpperCaseAndOthersForLowerCase(string text)
 {
     if (!text.empty())
@@ -65,6 +54,26 @@ int AuxiliaryMethods::loadInteger()
     return number;
 }
 
+float AuxiliaryMethods::loadAmount()
+{
+    string entry = "";
+    float number;
+
+    while (true)
+    {
+        cin.sync();
+        getline(cin, entry);
+
+        entry = changeComaToDot(entry);
+
+        stringstream myStream(entry);
+        if (myStream >> number)
+            break;
+        cout << "To nie jest kwota. Wpisz ponownie. " << endl;
+    }
+    return number;
+}
+
 char AuxiliaryMethods::loadChar()
 {
     string entry = "";
@@ -83,5 +92,50 @@ char AuxiliaryMethods::loadChar()
         cout << "To nie jest pojedynczy znak. Wpisz ponownie." << endl;
     }
     return sign;
+}
+
+string AuxiliaryMethods::addDashesToDate(string date)
+{
+    string dateWithDashes;
+    dateWithDashes = date.insert (4,1,'-');
+    dateWithDashes = dateWithDashes.insert (7,1,'-');
+
+    return dateWithDashes;
+}
+
+string AuxiliaryMethods::removeDashesFromDate(string date) {
+
+    string dateWithoutDashes;
+
+    for (int i = 0 ; i <= date.length(); i++) {
+        if (date[i] != '-') {
+            dateWithoutDashes += date[i];
+        }
+    }
+    return dateWithoutDashes;
+}
+
+string AuxiliaryMethods::convertFloatToString(float number)
+{
+    stringstream ss;
+    ss << number;
+    string str = ss.str();
+    return str;
+}
+
+float AuxiliaryMethods::convertStringToFloat(string number)
+{
+    float numberFloat = stof(number);
+    return numberFloat;
+}
+
+string AuxiliaryMethods::changeComaToDot(string amount) {
+
+    for(int i = 0; i < amount.length(); i++ ) {
+        if(amount[i] == ',')
+            amount[i] = '.';
+    }
+
+    return amount;
 }
 
