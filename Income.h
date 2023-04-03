@@ -22,6 +22,21 @@ public:
         this->item = item;
         this->amount = amount;
     }
+
+    void setIncomeId (int newIncomeId);
+    void setUserId (int newUserId);
+    void setDate (string newDate);
+    void setItem (string newItem);
+    void setAmount (float newAmount);
+
+    int getIncomeId();
+    int getUserId();
+    string getDate();
+    string getItem();
+    float getAmount();
+
+
+
     //void setupDate();
    /* void setupDate (int newDate);
     void setupStringDate (string newDate);

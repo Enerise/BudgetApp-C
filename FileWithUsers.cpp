@@ -89,5 +89,5 @@ void FileWithUsers::changePasswordInFileUsers(int loggedUserId, string newPasswo
         xml.Save("Users.xml");
     }
     else
-        cout << "Nie mo¿na otworzyc pliku !" << endl;
+        cout << "Nie mozna otworzyc pliku !" << endl;
 }
