@@ -8,7 +8,7 @@ void PersonalBudget::registerUser() {
 void PersonalBudget::loginUser() {
     userManager.loginUser();
     if(userManager.isUserLoggedIn()) {
-        itemManager = new ItemManager(NAME_FILE_WITH_INCOMES, userManager.getLoggedInUserId());
+        itemManager = new ItemManager(userManager.getLoggedInUserId(), NAME_FILE_WITH_INCOMES);
     }
 }
 

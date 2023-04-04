@@ -26,7 +26,6 @@ Income ItemManager::getNewIncomeData() {
 
     Income income;
     string dateStr, item;
-    int incomeId, userId, dateInt;
     float amount;
     char choice;
 
@@ -72,7 +71,8 @@ string ItemManager::provideDate(char choice) {
 
 void ItemManager::showAllIncomes() {
 
-    for (int i = 0; i < incomes.size(); i++) {
+    int vectorSize = incomes.size();
+    for (int i = 0; i < vectorSize; i++) {
         cout << "Income ID: " << incomes[i].getIncomeId() << endl;
         cout << "User ID: " << incomes[i].getUserId() << endl;
         cout << "Date: " << incomes[i].getDate() << endl;

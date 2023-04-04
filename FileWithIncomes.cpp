@@ -33,7 +33,6 @@ bool FileWithIncomes::addIncomeToFile(Income income) {
 void FileWithIncomes::changeDateInFile(int incomeId) {
     CMarkup xml;
     bool fileExists = xml.Load(NAME_FILE_WITH_INCOMES);
-    int incomeIdInFile;//size_t userIdInFile {}; //?
     string dateWithoutDashes, dateWithDashes;
 
     if (fileExists) {

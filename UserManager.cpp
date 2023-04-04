@@ -107,7 +107,8 @@ void UserManager::changePassword() {
 
 void UserManager::showAllUsers() {
 
-    for (int i = 0; i < users.size(); i++) {
+    int vectorSize = users.size();
+    for (int i = 0; i < vectorSize; i++) {
         cout << "User ID: " << users[i].getUserId() << endl;
         cout << "Login: " << users[i].getLogin() << endl;
         cout << "Password: " << users[i].getPassword() << endl;

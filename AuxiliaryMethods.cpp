@@ -92,9 +92,10 @@ string AuxiliaryMethods::addDashesToDate(string date) {
 
 string AuxiliaryMethods::removeDashesFromDate(string date) {
 
-    string dateWithoutDashes;
+    string dateWithoutDashes = "";
+    int sizeStr = date.length();
 
-    for (int i = 0 ; i <= date.length(); i++) {
+    for (int i = 0 ; i <= sizeStr; i++) {
         if (date[i] != '-') {
             dateWithoutDashes += date[i];
         }
@@ -116,7 +117,8 @@ float AuxiliaryMethods::convertStringToFloat(string number) {
 
 string AuxiliaryMethods::changeComaToDot(string amount) {
 
-    for(int i = 0; i < amount.length(); i++ ) {
+   int sizeStr = amount.length();
+    for(int i = 0; i < sizeStr; i++ ) {
         if(amount[i] == ',')
             amount[i] = '.';
     }

@@ -22,8 +22,8 @@ class ItemManager {
     string provideDate(char choice);
 
 public:
-    ItemManager(string nameFileWithIncomes, int loggedInUserId)
-        : fileWithIncomes(nameFileWithIncomes), LOGGED_IN_USER_ID(loggedInUserId) {
+    ItemManager(int loggedInUserId, string nameFileWithIncomes)
+        : LOGGED_IN_USER_ID(loggedInUserId), fileWithIncomes(nameFileWithIncomes) {
         incomes = fileWithIncomes.loadIncomesFromFile(LOGGED_IN_USER_ID);
         //adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
     }
