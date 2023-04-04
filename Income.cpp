@@ -6,19 +6,19 @@ void Income::setUserId (int newUserId) {
 }
 
 void Income::setIncomeId (int newIncomeId) {
-        incomeId = newIncomeId;
+    incomeId = newIncomeId;
 }
 
 void Income::setDate (string newDate) {
-        date = newDate;
+    date = newDate;
 }
 
 void Income::setItem (string newItem) {
-        item = newItem;
+    item = newItem;
 }
 
 void Income::setAmount (float newAmount) {
-        amount = newAmount;
+    amount = newAmount;
 }
 
 int Income::getIncomeId() {

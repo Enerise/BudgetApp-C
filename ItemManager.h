@@ -11,7 +11,7 @@
 
 using namespace std;
 
-class ItemManager{
+class ItemManager {
     vector <Income> incomes;
     const int LOGGED_IN_USER_ID;
     FileWithIncomes fileWithIncomes;
@@ -23,11 +23,10 @@ class ItemManager{
 
 public:
     ItemManager(string nameFileWithIncomes, int loggedInUserId)
-        : fileWithIncomes(nameFileWithIncomes), LOGGED_IN_USER_ID(loggedInUserId)
-        {
-            incomes = fileWithIncomes.loadIncomesFromFile(LOGGED_IN_USER_ID);
-            //adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
-        }
+        : fileWithIncomes(nameFileWithIncomes), LOGGED_IN_USER_ID(loggedInUserId) {
+        incomes = fileWithIncomes.loadIncomesFromFile(LOGGED_IN_USER_ID);
+        //adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
+    }
     void  showAllIncomes();
     void addIncome();
 };

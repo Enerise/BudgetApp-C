@@ -1,7 +1,6 @@
 #include "DateManager.h"
 
-void DateManager::calculateCurrentDate()
-{
+void DateManager::calculateCurrentDate() {
     year = getCurrentYear();
     currentDate = (year * 10000);
     month = getCurrentMonth();
@@ -24,8 +23,7 @@ int DateManager::getCurrentDay() {
     return day;
 }
 
-string DateManager::getCurrentDateWithoutDashes()
-{
+string DateManager::getCurrentDateWithoutDashes() {
     string currentDateStr = AuxiliaryMethods::convertIntegerToString(currentDate);
     return currentDateStr;
 }
@@ -57,7 +55,7 @@ bool DateManager::isDateCorrect(string date) {
 
 bool DateManager::isValidFormatDate (string date) {
 
-    if ((!date.size() == 10) || (!date[0] == 2) || (date[4] != '-') || (date[7] != '-'))
+    if ((date.size() != 10) || (date[0] != 2) || (date[4] != '-') || (date[7] != '-'))
         return false;
     else
         return true;
@@ -97,6 +95,7 @@ bool DateManager::isValidDay (int dayFromUser, int monthFromUser, int yearFromUs
             return true;
         } else return false;
     }
+    return false;
 }
 
 bool DateManager::isLeap(int yearFromUser) {

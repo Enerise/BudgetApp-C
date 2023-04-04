@@ -11,11 +11,9 @@ class Income {
     string date;
     string item;
     float amount;
-    //int intDate;
 
 public:
-        Income(int incomeId = 0, int userId = 0, string date = "", string item = "", float amount = 0.0)
-    {
+    Income(int incomeId = 0, int userId = 0, string date = "", string item = "", float amount = 0.0) {
         this->incomeId = incomeId;
         this->userId = userId;
         this->date = date;
@@ -38,20 +36,20 @@ public:
 
 
     //void setupDate();
-   /* void setupDate (int newDate);
-    void setupStringDate (string newDate);
-    void setupUserId (int newUserId);
-    void setupItemId (int newItemId);
-    void setupItemName(string newItemName);
-    void setupItemAmount(float newItemAmount);
+    /* void setupDate (int newDate);
+     void setupStringDate (string newDate);
+     void setupUserId (int newUserId);
+     void setupItemId (int newItemId);
+     void setupItemName(string newItemName);
+     void setupItemAmount(float newItemAmount);
 
-    int getItemId();
-    int getUserId();
-    string getItemName();
-    float getItemAmount();
-    string getItemDate();
-    int getIntDate();
-*/
+     int getItemId();
+     int getUserId();
+     string getItemName();
+     float getItemAmount();
+     string getItemDate();
+     int getIntDate();
+    */
 };
 
 #endif

@@ -1,7 +1,6 @@
 #include "FileWithIncomes.h"
 
-bool FileWithIncomes::addIncomeToFile(Income income)
-{
+bool FileWithIncomes::addIncomeToFile(Income income) {
     lastIncomeId++;
     string amount;
 
@@ -9,8 +8,7 @@ bool FileWithIncomes::addIncomeToFile(Income income)
 
     bool fileExists = xml.Load( NAME_FILE_WITH_INCOMES );
 
-    if (!fileExists)
-    {
+    if (!fileExists) {
         xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
         xml.AddElem("Incomes");
     }
@@ -32,24 +30,20 @@ bool FileWithIncomes::addIncomeToFile(Income income)
     return true;
 }
 
-void FileWithIncomes::changeDateInFile(int incomeId)
-{
+void FileWithIncomes::changeDateInFile(int incomeId) {
     CMarkup xml;
     bool fileExists = xml.Load(NAME_FILE_WITH_INCOMES);
     int incomeIdInFile;//size_t userIdInFile {}; //?
     string dateWithoutDashes, dateWithDashes;
 
-    if (fileExists)
-    {
+    if (fileExists) {
         xml.FindElem("Incomes");
         xml.IntoElem();
-        while (xml.FindElem("Income"))
-        {
+        while (xml.FindElem("Income")) {
             xml.IntoElem();
             xml.FindElem("incomeId");
             userIdInFile = AuxiliaryMethods::convertStringtoInteger(xml.GetData());
-            if (userIdInFile == incomeId)
-            {
+            if (userIdInFile == incomeId) {
                 xml.FindElem("date");
                 dateWithoutDashes = xml.GetData();
                 dateWithDashes = AuxiliaryMethods::addDashesToDate(dateWithoutDashes);
@@ -59,14 +53,12 @@ void FileWithIncomes::changeDateInFile(int incomeId)
             xml.OutOfElem();
         }
         xml.Save("Incomes.xml");
-    }
-    else
+    } else
         cout << "Nie mozna otworzyc pliku !" << endl;
 }
 
 
-vector <Income> FileWithIncomes::loadIncomesFromFile(int loggedUserId)
-{
+vector <Income> FileWithIncomes::loadIncomesFromFile(int loggedUserId) {
     Income income;
     //vector <User> users;
     int userIdInFile;
@@ -103,15 +95,13 @@ vector <Income> FileWithIncomes::loadIncomesFromFile(int loggedUserId)
                 incomes.push_back(income);
 
                 xml.OutOfElem();
-            }
-            else xml.OutOfElem();
+            } else xml.OutOfElem();
         }
     }
 
     return incomes;
 }
 
-int FileWithIncomes::getLastIncomeId()
-{
+int FileWithIncomes::getLastIncomeId() {
     return lastIncomeId;
 }

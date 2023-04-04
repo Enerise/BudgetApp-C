@@ -4,13 +4,11 @@
 #include <iostream>
 #include <ctime>
 
-//#include "FileWithIncomes.h"
 #include "AuxiliaryMethods.h"
 
 using namespace std;
 
-class DateManager
-{
+class DateManager {
     time_t tim = time(NULL);
     struct tm *gottime = gmtime(&tim);
 
@@ -18,8 +16,6 @@ class DateManager
     string currentDateStr;
 
     const int MIN_VALID_YEAR = 2000;
-
-
 
     void calculateCurrentDate();
     int getCurrentYear();
@@ -29,12 +25,10 @@ class DateManager
     bool isValidFormatDate (string date);
     bool isValidYear(int yearFromUser);
     bool isValidMonth(int monthFromUser);
-     bool isLeap(int yearFromUser);
+    bool isLeap(int yearFromUser);
     bool isValidDay (int dayFromUser, int monthFromUser, int yearFromUser);
 
-
-
-    public:
+public:
     DateManager() {
         currentDateStr = "";
         calculateCurrentDate();

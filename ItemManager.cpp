@@ -1,8 +1,7 @@
 #include "ItemManager.h"
 
 
-void ItemManager::addIncome()
-{
+void ItemManager::addIncome() {
     showAllIncomes();
     system("pause");
     Income income;
@@ -12,8 +11,7 @@ void ItemManager::addIncome()
     income = getNewIncomeData();
 
     incomes.push_back(income);
-    if(fileWithIncomes.addIncomeToFile(income))
-    {
+    if(fileWithIncomes.addIncomeToFile(income)) {
         lastIdIncome = fileWithIncomes.getLastIncomeId();
         fileWithIncomes.changeDateInFile(lastIdIncome);
         cout << "Nowy przychod zostal dodany" << endl;
@@ -72,8 +70,7 @@ string ItemManager::provideDate(char choice) {
     }
 }
 
-void ItemManager::showAllIncomes()
-{
+void ItemManager::showAllIncomes() {
 
     for (int i = 0; i < incomes.size(); i++) {
         cout << "Income ID: " << incomes[i].getIncomeId() << endl;

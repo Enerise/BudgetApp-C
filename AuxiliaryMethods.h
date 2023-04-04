@@ -9,8 +9,7 @@
 
 using namespace std;
 
-class AuxiliaryMethods
-{
+class AuxiliaryMethods {
 public:
     static string convertIntegerToString(int number);
     static string loadLine();
