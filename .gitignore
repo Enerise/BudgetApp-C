@@ -5,3 +5,4 @@ BudgetApp.*
 main.o
 users.xml
 incomes.xml
+expenses.xml

@@ -1,48 +1,48 @@
-#include "FileWithIncomes.h"
+#include "FileWithExpenses.h"
 
-bool FileWithIncomes::addIncomeToFile(Income income) {
-    lastIncomeId++;
+bool FileWithExpenses::addExpenseToFile(Expense expense) {
+    lastExpenseId++;
     string amount;
 
     CMarkup xml;
 
-    bool fileExists = xml.Load( NAME_FILE_WITH_INCOMES );
+    bool fileExists = xml.Load( NAME_FILE_WITH_EXPENSES );
 
     if (!fileExists) {
         xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-        xml.AddElem("Incomes");
+        xml.AddElem("Expenses");
     }
 
     xml.FindElem();
     xml.IntoElem();
-    xml.AddElem("Income");
+    xml.AddElem("Expense");
     xml.IntoElem();
-    xml.AddElem("incomeId", income.getIncomeId());
-    xml.AddElem("userId", income.getUserId());
-    xml.AddElem("date", income.getDate());
-    xml.AddElem("item", income.getItem());
-    amount = AuxiliaryMethods::convertFloatToString(income.getAmount());
+    xml.AddElem("expenseId", expense.getExpenseId());
+    xml.AddElem("userId", expense.getUserId());
+    xml.AddElem("date", expense.getDate());
+    xml.AddElem("item", expense.getItem());
+    amount = AuxiliaryMethods::convertFloatToString(expense.getAmount());
     xml.AddElem("amount", amount);
 
 
-    xml.Save(NAME_FILE_WITH_INCOMES);
+    xml.Save(NAME_FILE_WITH_EXPENSES);
 
     return true;
 }
 
-void FileWithIncomes::changeDateInFile(int incomeId) {
+void FileWithExpenses::changeDateInFile(int expenseId) {
     CMarkup xml;
-    bool fileExists = xml.Load(NAME_FILE_WITH_INCOMES);
+    bool fileExists = xml.Load(NAME_FILE_WITH_EXPENSES);
     string dateWithoutDashes, dateWithDashes;
 
     if (fileExists) {
-        xml.FindElem("Incomes");
+        xml.FindElem("Expenses");
         xml.IntoElem();
-        while (xml.FindElem("Income")) {
+        while (xml.FindElem("Expense")) {
             xml.IntoElem();
-            xml.FindElem("incomeId");
+            xml.FindElem("expenseId");
             userIdInFile = AuxiliaryMethods::convertStringtoInteger(xml.GetData());
-            if (userIdInFile == incomeId) {
+            if (userIdInFile == expenseId) {
                 xml.FindElem("date");
                 dateWithoutDashes = xml.GetData();
                 dateWithDashes = AuxiliaryMethods::addDashesToDate(dateWithoutDashes);
@@ -51,55 +51,55 @@ void FileWithIncomes::changeDateInFile(int incomeId) {
             }
             xml.OutOfElem();
         }
-        xml.Save("Incomes.xml");
+        xml.Save("Expenses.xml");
     } else
         cout << "Nie mozna otworzyc pliku !" << endl;
 }
 
 
-vector <Income> FileWithIncomes::loadIncomesFromFile(int loggedUserId) {
-    Income income;
+vector <Expense> FileWithExpenses::loadExpensesFromFile(int loggedUserId) {
+    Expense expense;
     int userIdInFile;
     string date, item;
     float amount;
 
     CMarkup xml;
-    bool fileExists = xml.Load(NAME_FILE_WITH_INCOMES);
+    bool fileExists = xml.Load(NAME_FILE_WITH_EXPENSES);
 
     if (fileExists) {
-        xml.FindElem("Incomes");
+        xml.FindElem("Expenses");
         xml.IntoElem();
-        while (xml.FindElem("Income")) {
+        while (xml.FindElem("Expense")) {
             xml.IntoElem();
-            xml.FindElem("incomeId");
-            lastIncomeId = AuxiliaryMethods::convertStringtoInteger(xml.GetData());
+            xml.FindElem("expenseId");
+            lastExpenseId = AuxiliaryMethods::convertStringtoInteger(xml.GetData());
             xml.FindElem("userId");
             userIdInFile = AuxiliaryMethods::convertStringtoInteger(xml.GetData());
             if (userIdInFile == loggedUserId) {
-                income.setIncomeId(lastIncomeId);
+                expense.setExpenseId(lastExpenseId);
 
-                income.setUserId(userIdInFile);
+                expense.setUserId(userIdInFile);
 
                 xml.FindElem( "date");
                 date = xml.GetData();
                 date = AuxiliaryMethods::removeDashesFromDate(date);
-                income.setDate(date);
+                expense.setDate(date);
                 xml.FindElem( "item");
                 item = xml.GetData();
-                income.setItem(item);
+                expense.setItem(item);
                 xml.FindElem( "amount");
                 amount = AuxiliaryMethods::convertStringToFloat(xml.GetData());
-                income.setAmount(amount);
-                incomes.push_back(income);
+                expense.setAmount(amount);
+                expenses.push_back(expense);
 
                 xml.OutOfElem();
             } else xml.OutOfElem();
         }
     }
 
-    return incomes;
+    return expenses;
 }
 
-int FileWithIncomes::getLastIncomeId() {
-    return lastIncomeId;
+int FileWithExpenses::getLastExpenseId() {
+    return lastExpenseId;
 }

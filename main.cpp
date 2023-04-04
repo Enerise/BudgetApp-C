@@ -6,7 +6,7 @@
 using namespace std;
 
 int main() {
-    PersonalBudget personalBudget ("Users.xml", "Incomes.xml"); //, "Adresaci.txt");
+    PersonalBudget personalBudget ("Users.xml", "Incomes.xml", "Expenses.xml"); //, "Adresaci.txt");
     char choice;
     while(true) {
         if(personalBudget.getLoggedInUserId() == 0) {
@@ -36,7 +36,7 @@ int main() {
                 personalBudget.addIncome();
                 break;
             case '2':
-                // ksiazkaAdresowa.wyszukajAdresatowPoImieniu();
+                personalBudget.addExpense();
                 break;
             case '3':
                 // ksiazkaAdresowa.wyszukajAdresatowPoNazwisku();

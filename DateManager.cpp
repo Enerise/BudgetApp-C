@@ -54,8 +54,8 @@ bool DateManager::isDateCorrect(string date) {
 }
 
 bool DateManager::isValidFormatDate (string date) {
-
-    if ((date.size() != 10) || (date[0] != 2) || (date[4] != '-') || (date[7] != '-'))
+    int sizeStr = date.length();
+    if((sizeStr != 10) || (date[0]-48 != 2) || (date[4] != '-') || (date[7] != '-'))
         return false;
     else
         return true;

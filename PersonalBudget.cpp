@@ -8,7 +8,7 @@ void PersonalBudget::registerUser() {
 void PersonalBudget::loginUser() {
     userManager.loginUser();
     if(userManager.isUserLoggedIn()) {
-        itemManager = new ItemManager(userManager.getLoggedInUserId(), NAME_FILE_WITH_INCOMES);
+        itemManager = new ItemManager(userManager.getLoggedInUserId(), NAME_FILE_WITH_INCOMES, NAME_FILE_WITH_EXPENSES);
     }
 }
 
@@ -72,6 +72,15 @@ void PersonalBudget::logoutUser() {
 void PersonalBudget::addIncome() {
     if(userManager.isUserLoggedIn()) {
         itemManager->addIncome();
+    } else {
+        cout << "Aby dodac adresata, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }
+}
+
+void PersonalBudget::addExpense() {
+    if(userManager.isUserLoggedIn()) {
+        itemManager->addExpense();
     } else {
         cout << "Aby dodac adresata, nalezy najpierw sie zalogowac" << endl;
         system("pause");

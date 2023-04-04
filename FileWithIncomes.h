@@ -23,7 +23,6 @@ public:
     }
     vector <Income> loadIncomesFromFile(int loggedUserId);
 
-    //int getLastIncomeIdFromFile(int loggedUserId);
     void changeDateInFile(int incomeId);
     bool addIncomeToFile(Income income);
     int getLastIncomeId();

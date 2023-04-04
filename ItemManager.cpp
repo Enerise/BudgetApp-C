@@ -51,6 +51,56 @@ Income ItemManager::getNewIncomeData() {
     return income;
 }
 
+void ItemManager::addExpense(){
+    showAllExpenses();
+    system("pause");
+    Expense expense;
+    int lastIdExpense;
+    system("cls");
+    cout << " >>> DODAWANIE NOWEGO WYDATKU <<<" << endl << endl;
+    expense = getNewExpenseData();
+
+    expenses.push_back(expense);
+    if(fileWithExpenses.addExpenseToFile(expense)) {
+        lastIdExpense = fileWithExpenses.getLastExpenseId();
+        fileWithExpenses.changeDateInFile(lastIdExpense);
+        cout << "Nowy wydatek zostal dodany" << endl;
+    }
+
+    else
+        cout << "Blad. Nie udalo sie dodac nowego wydatku do pliku." << endl;
+    system("pause");
+}
+
+Expense ItemManager::getNewExpenseData() {
+
+    Expense expense;
+    string dateStr, item;
+    float amount;
+    char choice;
+
+    expense.setExpenseId( fileWithExpenses.getLastExpenseId() + 1);
+    expense.setUserId(LOGGED_IN_USER_ID) ;
+
+    cout << "Czy wydatek ma zostac dodany z data dzisiejsza?" << endl;;
+    cout << "Jesli tak wcisnij klawisz 't'" << endl;
+    cout << "Jesli nie wcisnij klawisz 'n'" << endl;
+    choice = AuxiliaryMethods::loadChar();
+
+    expense.setDate(provideDate(choice));
+
+    cout << "Podaj nazwe/opis wydatku: ";
+    item = AuxiliaryMethods::loadLine();
+
+    cout << "Podaj kwote wydatku: ";
+    amount = AuxiliaryMethods::loadAmount();
+
+    expense.setItem(item);
+    expense.setAmount(amount);
+
+    return expense;
+}
+
 string ItemManager::provideDate(char choice) {
     string dateStr;
     while(true) {
@@ -64,7 +114,7 @@ string ItemManager::provideDate(char choice) {
                 dateStr = AuxiliaryMethods::removeDashesFromDate(dateStr);
                 return dateStr;
             } else
-                cout << "Data niepoprawna. Wprowadz ponownie date w formacie rrrr-mm-dd";
+                cout << "Data niepoprawna" << endl;
         }
     }
 }
@@ -78,6 +128,19 @@ void ItemManager::showAllIncomes() {
         cout << "Date: " << incomes[i].getDate() << endl;
         cout << "Item: " << incomes[i].getItem() << endl;
         cout << "UAmoutn: " << incomes[i].getAmount() << endl << endl;
+    }
+
+}
+
+void ItemManager::showAllExpenses() {
+
+    int vectorSize = expenses.size();
+    for (int i = 0; i < vectorSize; i++) {
+        cout << "Income ID: " << expenses[i].getExpenseId() << endl;
+        cout << "User ID: " << expenses[i].getUserId() << endl;
+        cout << "Date: " << expenses[i].getDate() << endl;
+        cout << "Item: " << expenses[i].getItem() << endl;
+        cout << "UAmoutn: " << expenses[i].getAmount() << endl << endl;
     }
 
 }
