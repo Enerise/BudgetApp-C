@@ -1,13 +1,11 @@
 #include "FileWithUsers.h"
 
-void FileWithUsers::addUserToFile(User user)
-{
-   CMarkup xml;
+void FileWithUsers::addUserToFile(User user) {
+    CMarkup xml;
 
     bool fileExists = xml.Load( NAME_FILE_WITH_USERS );
 
-    if (!fileExists)
-    {
+    if (!fileExists) {
         xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
         xml.AddElem("Users");
     }
@@ -25,8 +23,7 @@ void FileWithUsers::addUserToFile(User user)
     xml.Save("users.xml");
 }
 
-vector <User> FileWithUsers::loadUsersFromFile()
-{
+vector <User> FileWithUsers::loadUsersFromFile() {
     User user;
     vector <User> users;
     int userId;
@@ -35,8 +32,7 @@ vector <User> FileWithUsers::loadUsersFromFile()
     CMarkup xml;
     bool fileExists = xml.Load(NAME_FILE_WITH_USERS);
 
- if (fileExists)
-    {
+    if (fileExists) {
         xml.FindElem();
         xml.IntoElem();
         while (xml.FindElem("User")) {
@@ -64,22 +60,18 @@ vector <User> FileWithUsers::loadUsersFromFile()
     return users;
 }
 
-void FileWithUsers::changePasswordInFileUsers(int loggedUserId, string newPassword)
-{
+void FileWithUsers::changePasswordInFileUsers(int loggedUserId, string newPassword) {
     CMarkup xml;
     bool fileExists = xml.Load(NAME_FILE_WITH_USERS);
     int userIdInFile;//size_t userIdInFile {}; //?
-    if (fileExists)
-    {
+    if (fileExists) {
         xml.FindElem("Users");
         xml.IntoElem();
-        while (xml.FindElem("User"))
-        {
+        while (xml.FindElem("User")) {
             xml.IntoElem();
             xml.FindElem("userId");
             userIdInFile = AuxiliaryMethods::convertStringtoInteger(xml.GetData());
-            if (userIdInFile == loggedUserId)
-            {
+            if (userIdInFile == loggedUserId) {
                 xml.FindElem("password");
                 xml.SetData(newPassword);
                 break;
@@ -87,7 +79,6 @@ void FileWithUsers::changePasswordInFileUsers(int loggedUserId, string newPasswo
             xml.OutOfElem();
         }
         xml.Save("Users.xml");
-    }
-    else
+    } else
         cout << "Nie mozna otworzyc pliku !" << endl;
 }

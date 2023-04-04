@@ -10,7 +10,7 @@
 
 using namespace std;
 
-class FileWithIncomes{
+class FileWithIncomes {
 
     vector <Income> incomes;
     const string NAME_FILE_WITH_INCOMES;
@@ -18,13 +18,11 @@ class FileWithIncomes{
     int userIdInFile;
 
 public:
-    FileWithIncomes(string nameFileWithIncomes) : NAME_FILE_WITH_INCOMES(nameFileWithIncomes)
-    {
+    FileWithIncomes(string nameFileWithIncomes) : NAME_FILE_WITH_INCOMES(nameFileWithIncomes) {
         lastIncomeId = 0;
     }
     vector <Income> loadIncomesFromFile(int loggedUserId);
 
-    //int getLastIncomeIdFromFile(int loggedUserId);
     void changeDateInFile(int incomeId);
     bool addIncomeToFile(Income income);
     int getLastIncomeId();

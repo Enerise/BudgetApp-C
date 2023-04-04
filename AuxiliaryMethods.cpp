@@ -1,34 +1,29 @@
 #include "PersonalBudget.h"
 #include "AuxiliaryMethods.h"
 
-string AuxiliaryMethods::convertIntegerToString(int number)
-{
+string AuxiliaryMethods::convertIntegerToString(int number) {
     ostringstream ss;
     ss << number;
     string str = ss.str();
     return str;
 }
 
-string AuxiliaryMethods::loadLine()
-{
+string AuxiliaryMethods::loadLine() {
     cin.sync();
     string entry = "";
     getline(cin, entry);
     return entry;
 }
 
-string AuxiliaryMethods::changeFirstLetterForUpperCaseAndOthersForLowerCase(string text)
-{
-    if (!text.empty())
-    {
+string AuxiliaryMethods::changeFirstLetterForUpperCaseAndOthersForLowerCase(string text) {
+    if (!text.empty()) {
         transform(text.begin(), text.end(), text.begin(), ::tolower);
         text[0] = toupper(text[0]);
     }
     return text;
 }
 
-int AuxiliaryMethods::convertStringtoInteger(string number)
-{
+int AuxiliaryMethods::convertStringtoInteger(string number) {
     int numberInt;
     istringstream iss(number);
     iss >> numberInt;
@@ -36,13 +31,11 @@ int AuxiliaryMethods::convertStringtoInteger(string number)
     return numberInt;
 }
 
-int AuxiliaryMethods::loadInteger()
-{
+int AuxiliaryMethods::loadInteger() {
     string entry = "";
     int number = 0;
 
-    while (true)
-    {
+    while (true) {
         cin.sync();
         getline(cin, entry);
 
@@ -54,13 +47,11 @@ int AuxiliaryMethods::loadInteger()
     return number;
 }
 
-float AuxiliaryMethods::loadAmount()
-{
+float AuxiliaryMethods::loadAmount() {
     string entry = "";
     float number;
 
-    while (true)
-    {
+    while (true) {
         cin.sync();
         getline(cin, entry);
 
@@ -74,18 +65,15 @@ float AuxiliaryMethods::loadAmount()
     return number;
 }
 
-char AuxiliaryMethods::loadChar()
-{
+char AuxiliaryMethods::loadChar() {
     string entry = "";
     char sign  = {0};
 
-    while (true)
-    {
+    while (true) {
         cin.sync();
         getline(cin, entry);
 
-        if (entry.length() == 1)
-        {
+        if (entry.length() == 1) {
             sign = entry[0];
             break;
         }
@@ -94,8 +82,7 @@ char AuxiliaryMethods::loadChar()
     return sign;
 }
 
-string AuxiliaryMethods::addDashesToDate(string date)
-{
+string AuxiliaryMethods::addDashesToDate(string date) {
     string dateWithDashes;
     dateWithDashes = date.insert (4,1,'-');
     dateWithDashes = dateWithDashes.insert (7,1,'-');
@@ -105,9 +92,10 @@ string AuxiliaryMethods::addDashesToDate(string date)
 
 string AuxiliaryMethods::removeDashesFromDate(string date) {
 
-    string dateWithoutDashes;
+    string dateWithoutDashes = "";
+    int sizeStr = date.length();
 
-    for (int i = 0 ; i <= date.length(); i++) {
+    for (int i = 0 ; i <= sizeStr; i++) {
         if (date[i] != '-') {
             dateWithoutDashes += date[i];
         }
@@ -115,23 +103,22 @@ string AuxiliaryMethods::removeDashesFromDate(string date) {
     return dateWithoutDashes;
 }
 
-string AuxiliaryMethods::convertFloatToString(float number)
-{
+string AuxiliaryMethods::convertFloatToString(float number) {
     stringstream ss;
     ss << number;
     string str = ss.str();
     return str;
 }
 
-float AuxiliaryMethods::convertStringToFloat(string number)
-{
+float AuxiliaryMethods::convertStringToFloat(string number) {
     float numberFloat = stof(number);
     return numberFloat;
 }
 
 string AuxiliaryMethods::changeComaToDot(string amount) {
 
-    for(int i = 0; i < amount.length(); i++ ) {
+   int sizeStr = amount.length();
+    for(int i = 0; i < sizeStr; i++ ) {
         if(amount[i] == ',')
             amount[i] = '.';
     }

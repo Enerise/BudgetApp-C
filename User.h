@@ -5,8 +5,7 @@
 
 using namespace std;
 
-class User
-{
+class User {
     int userId;
     string login;
     string password;
@@ -15,8 +14,7 @@ class User
 
 public:
 
-    User(int userId = 0, string login = "", string password = "", string userName = "", string userSurname = "")
-    {
+    User(int userId = 0, string login = "", string password = "", string userName = "", string userSurname = "") {
         this->userId = userId;
         this->login = login;
         this->password = password;

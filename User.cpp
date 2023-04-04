@@ -6,19 +6,19 @@ void User::setUserId (int newUserId) {
 }
 
 void User::setLogin (string newLogin) {
-        login = newLogin;
+    login = newLogin;
 }
 
 void User::setPassword (string newPassword) {
-        password = newPassword;
+    password = newPassword;
 }
 
 void User::setUserName (string newUserName) {
-        userName = newUserName;
+    userName = newUserName;
 }
 
 void User::setUserSurname (string newUserSurname) {
-        userSurname = newUserSurname;
+    userSurname = newUserSurname;
 }
 
 int User::getUserId() {

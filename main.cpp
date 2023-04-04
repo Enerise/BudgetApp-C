@@ -6,7 +6,7 @@
 using namespace std;
 
 int main() {
-    PersonalBudget personalBudget ("Users.xml", "Incomes.xml"); //, "Adresaci.txt");
+    PersonalBudget personalBudget ("Users.xml", "Incomes.xml", "Expenses.xml"); //, "Adresaci.txt");
     char choice;
     while(true) {
         if(personalBudget.getLoggedInUserId() == 0) {
@@ -32,32 +32,32 @@ int main() {
             choice = personalBudget.selectOptionFromUserMenu();
 
             switch(choice) {
-                case '1':
-                    personalBudget.addIncome();
-                    break;
-                case '2':
-                   // ksiazkaAdresowa.wyszukajAdresatowPoImieniu();
-                    break;
-                case '3':
-                   // ksiazkaAdresowa.wyszukajAdresatowPoNazwisku();
-                    break;
-                case '4':
-                   // ksiazkaAdresowa.wyswietlWszystkichAdresatow();
-                    break;
-                case '5':
-                    //ksiazkaAdresowa.usunAdresata();
-                    break;
-                 case '6':
-                   // ksiazkaAdresowa.edytujAdresata();
-                    break;
-                case '7':
-                    personalBudget.changePassword();
-                    break;
-                case '8':
-                    personalBudget.logoutUser();
-                    break;
-                }
+            case '1':
+                personalBudget.addIncome();
+                break;
+            case '2':
+                personalBudget.addExpense();
+                break;
+            case '3':
+                // ksiazkaAdresowa.wyszukajAdresatowPoNazwisku();
+                break;
+            case '4':
+                // ksiazkaAdresowa.wyswietlWszystkichAdresatow();
+                break;
+            case '5':
+                //ksiazkaAdresowa.usunAdresata();
+                break;
+            case '6':
+                // ksiazkaAdresowa.edytujAdresata();
+                break;
+            case '7':
+                personalBudget.changePassword();
+                break;
+            case '8':
+                personalBudget.logoutUser();
+                break;
             }
         }
+    }
     return 0;
 }

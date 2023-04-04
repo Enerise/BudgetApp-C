@@ -1,32 +1,26 @@
 #include "PersonalBudget.h"
 #include "AuxiliaryMethods.h"
 
-void PersonalBudget::registerUser()
-{
+void PersonalBudget::registerUser() {
     userManager.registerUser();
 }
 
-void PersonalBudget::loginUser()
-{
+void PersonalBudget::loginUser() {
     userManager.loginUser();
-    if(userManager.isUserLoggedIn())
-    {
-        itemManager = new ItemManager(NAME_FILE_WITH_INCOMES, userManager.getLoggedInUserId());
+    if(userManager.isUserLoggedIn()) {
+        itemManager = new ItemManager(userManager.getLoggedInUserId(), NAME_FILE_WITH_INCOMES, NAME_FILE_WITH_EXPENSES);
     }
 }
 
-void PersonalBudget::changePassword()
-{
+void PersonalBudget::changePassword() {
     userManager.changePassword();
 }
 
-void PersonalBudget::showAllUsers()
-{
+void PersonalBudget::showAllUsers() {
     userManager.showAllUsers();
 }
 
-char PersonalBudget::selectOptionFromMainMenu()
-{
+char PersonalBudget::selectOptionFromMainMenu() {
     char choice;
 
     system("cls");
@@ -42,8 +36,7 @@ char PersonalBudget::selectOptionFromMainMenu()
     return choice;
 }
 
-char PersonalBudget::selectOptionFromUserMenu()
-{
+char PersonalBudget::selectOptionFromUserMenu() {
     char choice;
 
     system("cls");
@@ -65,26 +58,30 @@ char PersonalBudget::selectOptionFromUserMenu()
 }
 
 
-int PersonalBudget::getLoggedInUserId()
-{
+int PersonalBudget::getLoggedInUserId() {
     return userManager.getLoggedInUserId();
 }
 
-void PersonalBudget::logoutUser(){
+void PersonalBudget::logoutUser() {
 
     userManager.logoutUser();
     delete itemManager;
     itemManager = NULL;
 }
 
-void PersonalBudget::addIncome()
-{
-    if(userManager.isUserLoggedIn())
-    {
+void PersonalBudget::addIncome() {
+    if(userManager.isUserLoggedIn()) {
         itemManager->addIncome();
+    } else {
+        cout << "Aby dodac adresata, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
     }
-    else
-    {
+}
+
+void PersonalBudget::addExpense() {
+    if(userManager.isUserLoggedIn()) {
+        itemManager->addExpense();
+    } else {
         cout << "Aby dodac adresata, nalezy najpierw sie zalogowac" << endl;
         system("pause");
     }
