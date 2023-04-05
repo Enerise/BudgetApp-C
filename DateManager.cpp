@@ -28,6 +28,13 @@ string DateManager::getCurrentDateWithoutDashes() {
     return currentDateStr;
 }
 
+int DateManager::getCurrentDateWithoutDayAndDashes() {
+    string currentDateStr = AuxiliaryMethods::convertIntegerToString(currentDate);
+    currentDateStr.replace(6, 2, "01");
+    int currentDateWithoutDay = AuxiliaryMethods::convertStringtoInteger(currentDateStr);
+    return currentDateWithoutDay;
+}
+
 bool DateManager::isDateCorrect(string date) {
 
     int yearFromUser = (date[0]-'0')*1000 + (date[1]-'0')*100 + (date[2]-'0')*10 + (date[3]-'0');

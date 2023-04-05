@@ -39,16 +39,13 @@ int main() {
                 personalBudget.addExpense();
                 break;
             case '3':
-                // ksiazkaAdresowa.wyszukajAdresatowPoNazwisku();
+                personalBudget.displayCurrentMonthBalance();
                 break;
             case '4':
                 // ksiazkaAdresowa.wyswietlWszystkichAdresatow();
                 break;
             case '5':
                 //ksiazkaAdresowa.usunAdresata();
-                break;
-            case '6':
-                // ksiazkaAdresowa.edytujAdresata();
                 break;
             case '7':
                 personalBudget.changePassword();

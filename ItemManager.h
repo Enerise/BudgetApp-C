@@ -20,6 +20,7 @@ class ItemManager {
     FileWithExpenses fileWithExpenses;
     DateManager dateManager;
 
+
     Income getNewIncomeData();
     Expense getNewExpenseData();
 
@@ -30,11 +31,13 @@ public:
         : LOGGED_IN_USER_ID(loggedInUserId), fileWithIncomes(nameFileWithIncomes), fileWithExpenses(nameFileWithExpenses) {
         incomes = fileWithIncomes.loadIncomesFromFile(LOGGED_IN_USER_ID);
         expenses = fileWithExpenses.loadExpensesFromFile(LOGGED_IN_USER_ID);
+
     }
     void showAllIncomes();
     void showAllExpenses();
     void addIncome();
     void addExpense();
+    void displayCurrentMonthBalance();
 };
 
 #endif

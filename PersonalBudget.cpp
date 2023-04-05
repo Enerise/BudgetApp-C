@@ -86,3 +86,12 @@ void PersonalBudget::addExpense() {
         system("pause");
     }
 }
+
+void PersonalBudget::displayCurrentMonthBalance() {
+    if(userManager.isUserLoggedIn()) {
+        itemManager->displayCurrentMonthBalance();
+    } else {
+        cout << "Aby dodac adresata, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }
+}

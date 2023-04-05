@@ -82,8 +82,9 @@ vector <Expense> FileWithExpenses::loadExpensesFromFile(int loggedUserId) {
 
                 xml.FindElem( "date");
                 date = xml.GetData();
-                date = AuxiliaryMethods::removeDashesFromDate(date);
                 expense.setDate(date);
+                date = AuxiliaryMethods::removeDashesFromDate(date);
+                expense.setDateInt(AuxiliaryMethods::convertStringtoInteger(date));
                 xml.FindElem( "item");
                 item = xml.GetData();
                 expense.setItem(item);

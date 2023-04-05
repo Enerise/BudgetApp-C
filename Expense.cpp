@@ -21,6 +21,10 @@ void Expense::setAmount (float newAmount) {
     amount = newAmount;
 }
 
+void Expense::setDateInt (int newDateInt) {
+    dateInt = newDateInt;
+}
+
 int Expense::getExpenseId() {
     return expenseId;
 }
@@ -39,4 +43,8 @@ string Expense::getItem() {
 
 float Expense::getAmount() {
     return amount;
+}
+
+int Expense::getDateInt() {
+    return dateInt;
 }
