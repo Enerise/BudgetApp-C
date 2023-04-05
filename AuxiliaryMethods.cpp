@@ -60,6 +60,7 @@ float AuxiliaryMethods::loadAmount() {
         stringstream myStream(entry);
         if (myStream >> number)
             break;
+
         cout << "To nie jest kwota. Wpisz ponownie. " << endl;
     }
     return number;

@@ -9,6 +9,7 @@
 #include "FileWithExpenses.h"
 #include "AuxiliaryMethods.h"
 #include "DateManager.h"
+#include "BalanceManager.h"
 
 using namespace std;
 
@@ -19,6 +20,7 @@ class ItemManager {
     FileWithIncomes fileWithIncomes;
     FileWithExpenses fileWithExpenses;
     DateManager dateManager;
+    BalanceManager balanceManager;
 
 
     Income getNewIncomeData();

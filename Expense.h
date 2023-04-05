@@ -23,6 +23,11 @@ public:
         this->dateInt = dateInt;
     }
 
+    bool operator < (const Expense& str) const
+    {
+        return (dateInt < str.dateInt);
+    }
+
     void setExpenseId (int newExpenseId);
     void setUserId (int newUserId);
     void setDate (string newDate);

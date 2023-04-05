@@ -126,12 +126,8 @@ string ItemManager::provideDate(char choice) {
 }
 
 void ItemManager::displayCurrentMonthBalance() {
-    int currentMonth;
-   currentMonth = dateManager.getCurrentDateWithoutDayAndDashes();
-    cout << currentMonth << endl;
-    system("pause");
-
-
+    int currentMonth = dateManager.getCurrentDateWithoutDayAndDashes();
+    balanceManager.displayCurrentMonthBalance(incomes, expenses, currentMonth);
 }
 
 void ItemManager::showAllIncomes() {
