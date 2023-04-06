@@ -38,7 +38,7 @@ vector <User> FileWithUsers::loadUsersFromFile() {
         while (xml.FindElem("User")) {
             xml.IntoElem();
             xml.FindElem( "userId");
-            userId = atoi(xml.GetData().c_str());//atoi( MCD_2PCSZ(xml.GetData()));
+            userId = atoi(xml.GetData().c_str());
             user.setUserId(userId);
             xml.FindElem( "login");
             login = xml.GetData();
@@ -63,7 +63,7 @@ vector <User> FileWithUsers::loadUsersFromFile() {
 void FileWithUsers::changePasswordInFileUsers(int loggedUserId, string newPassword) {
     CMarkup xml;
     bool fileExists = xml.Load(NAME_FILE_WITH_USERS);
-    int userIdInFile;//size_t userIdInFile {}; //?
+    int userIdInFile;
     if (fileExists) {
         xml.FindElem("Users");
         xml.IntoElem();

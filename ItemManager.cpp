@@ -2,18 +2,14 @@
 
 
 void ItemManager::addIncome() {
-    showAllIncomes();
-    system("pause");
     Income income;
-    int lastIdIncome;
+
     system("cls");
     cout << " >>> DODAWANIE NOWEGO PRZYCHODU <<<" << endl << endl;
     income = getNewIncomeData();
 
     incomes.push_back(income);
     if(fileWithIncomes.addIncomeToFile(income)) {
-        lastIdIncome = fileWithIncomes.getLastIncomeId();
-        fileWithIncomes.changeDateInFile(lastIdIncome);
         cout << "Nowy przychod zostal dodany" << endl;
     }
 
@@ -29,6 +25,7 @@ Income ItemManager::getNewIncomeData() {
     float amount;
     char choice;
 
+
     income.setIncomeId( fileWithIncomes.getLastIncomeId() + 1);
     income.setUserId(LOGGED_IN_USER_ID) ;
 
@@ -36,8 +33,10 @@ Income ItemManager::getNewIncomeData() {
     cout << "Jesli tak wcisnij klawisz 't'" << endl;
     cout << "Jesli nie wcisnij klawisz 'n'" << endl;
     choice = AuxiliaryMethods::loadChar();
+    dateStr = provideDate(choice);
 
-    income.setDate(provideDate(choice));
+    income.setDate(AuxiliaryMethods::addDashesToDate(dateStr));
+    income.setDateInt(AuxiliaryMethods::convertStringtoInteger(dateStr));
 
     cout << "Podaj nazwe/opis przychodu: ";
     item = AuxiliaryMethods::loadLine();
@@ -51,19 +50,14 @@ Income ItemManager::getNewIncomeData() {
     return income;
 }
 
-void ItemManager::addExpense(){
-    showAllExpenses();
-    system("pause");
+void ItemManager::addExpense() {
     Expense expense;
-    int lastIdExpense;
     system("cls");
     cout << " >>> DODAWANIE NOWEGO WYDATKU <<<" << endl << endl;
     expense = getNewExpenseData();
 
     expenses.push_back(expense);
     if(fileWithExpenses.addExpenseToFile(expense)) {
-        lastIdExpense = fileWithExpenses.getLastExpenseId();
-        fileWithExpenses.changeDateInFile(lastIdExpense);
         cout << "Nowy wydatek zostal dodany" << endl;
     }
 
@@ -87,7 +81,10 @@ Expense ItemManager::getNewExpenseData() {
     cout << "Jesli nie wcisnij klawisz 'n'" << endl;
     choice = AuxiliaryMethods::loadChar();
 
-    expense.setDate(provideDate(choice));
+    dateStr = (provideDate(choice));
+
+    expense.setDate(AuxiliaryMethods::addDashesToDate(dateStr));
+    expense.setDateInt(AuxiliaryMethods::convertStringtoInteger(dateStr));
 
     cout << "Podaj nazwe/opis wydatku: ";
     item = AuxiliaryMethods::loadLine();
@@ -119,7 +116,49 @@ string ItemManager::provideDate(char choice) {
     }
 }
 
-void ItemManager::showAllIncomes() {
+void ItemManager::displayCurrentMonthBalance() {
+    int currentMonth = dateManager.getCurrentDateWithoutDayAndDashes();
+    balanceManager.displayCurrentMonthBalance(incomes, expenses, currentMonth);
+}
+
+void ItemManager::displayPreviousMonthBalance() {
+    int previousMonthWithFirstDay = dateManager.getPreviousDateMonthWithFirstDay();
+    int previousMonthWithLastDay = dateManager.getPreviousDateMonthWithLastDay();
+    balanceManager.displayPreviousMonthBalanceAndSelectedPeriod(incomes, expenses, previousMonthWithFirstDay, previousMonthWithLastDay);
+}
+
+void ItemManager::displaySelectedPeriodBalance() {
+    string firstDateStr, lastDateStr;
+    int firstDate, lastDate;
+
+    while(true) {
+        cout << "wprowadz poczatkowa date dla ktorej utworzyc bilans w formacie rrrr-mm-dd" <<endl;
+        firstDateStr = AuxiliaryMethods::loadLine();
+        if(dateManager.isDateCorrect(firstDateStr))
+            break;
+        else
+            cout << "Data niepoprawna" << endl;
+    }
+
+    while(true) {
+        cout << "wprowadz koncowa date dla ktorej utworzyc bilans w formacie rrrr-mm-dd" <<endl;
+        lastDateStr = AuxiliaryMethods::loadLine();
+        if(dateManager.isDateCorrect(lastDateStr))
+            break;
+        else
+            cout << "Data niepoprawna" << endl;
+    }
+
+    firstDateStr = AuxiliaryMethods::removeDashesFromDate(firstDateStr);
+    firstDate = AuxiliaryMethods::convertStringtoInteger(firstDateStr);
+
+    lastDateStr = AuxiliaryMethods::removeDashesFromDate(lastDateStr);
+    lastDate = AuxiliaryMethods::convertStringtoInteger(lastDateStr);
+
+    balanceManager.displayPreviousMonthBalanceAndSelectedPeriod(incomes, expenses, firstDate, lastDate);
+}
+
+/*void ItemManager::showAllIncomes() {
 
     int vectorSize = incomes.size();
     for (int i = 0; i < vectorSize; i++) {
@@ -127,7 +166,8 @@ void ItemManager::showAllIncomes() {
         cout << "User ID: " << incomes[i].getUserId() << endl;
         cout << "Date: " << incomes[i].getDate() << endl;
         cout << "Item: " << incomes[i].getItem() << endl;
-        cout << "UAmoutn: " << incomes[i].getAmount() << endl << endl;
+        cout << "UAmoutn: " << incomes[i].getAmount() << endl;
+        cout << "DateInt: " << incomes[i].getDateInt() << endl << endl;
     }
 
 }
@@ -140,7 +180,7 @@ void ItemManager::showAllExpenses() {
         cout << "User ID: " << expenses[i].getUserId() << endl;
         cout << "Date: " << expenses[i].getDate() << endl;
         cout << "Item: " << expenses[i].getItem() << endl;
-        cout << "UAmoutn: " << expenses[i].getAmount() << endl << endl;
+        cout << "UAmoutn: " << expenses[i].getAmount() << endl;
+        cout << "DateInt: " << expenses[i].getDateInt() << endl << endl;
     }
-
-}
+}*/

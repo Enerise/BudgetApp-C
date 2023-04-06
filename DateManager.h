@@ -18,9 +18,7 @@ class DateManager {
     const int MIN_VALID_YEAR = 2000;
 
     void calculateCurrentDate();
-    int getCurrentYear();
-    int getCurrentMonth();
-    int getCurrentDay();
+
 
     bool isValidFormatDate (string date);
     bool isValidYear(int yearFromUser);
@@ -33,7 +31,12 @@ public:
         currentDateStr = "";
         calculateCurrentDate();
     }
-
+    int getCurrentYear();
+    int getCurrentMonth();
+    int getCurrentDay();
+    int getCurrentDateWithoutDayAndDashes();
+    int getPreviousDateMonthWithFirstDay();
+    int getPreviousDateMonthWithLastDay();
     bool isDateCorrect(string date);
     string getCurrentDateWithoutDashes();
 

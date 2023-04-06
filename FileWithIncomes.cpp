@@ -82,8 +82,10 @@ vector <Income> FileWithIncomes::loadIncomesFromFile(int loggedUserId) {
 
                 xml.FindElem( "date");
                 date = xml.GetData();
-                date = AuxiliaryMethods::removeDashesFromDate(date);
                 income.setDate(date);
+                date = AuxiliaryMethods::removeDashesFromDate(date);
+
+                income.setDateInt(AuxiliaryMethods::convertStringtoInteger(date));
                 xml.FindElem( "item");
                 item = xml.GetData();
                 income.setItem(item);

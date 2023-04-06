@@ -9,6 +9,7 @@
 #include "FileWithExpenses.h"
 #include "AuxiliaryMethods.h"
 #include "DateManager.h"
+#include "BalanceManager.h"
 
 using namespace std;
 
@@ -19,6 +20,8 @@ class ItemManager {
     FileWithIncomes fileWithIncomes;
     FileWithExpenses fileWithExpenses;
     DateManager dateManager;
+    BalanceManager balanceManager;
+
 
     Income getNewIncomeData();
     Expense getNewExpenseData();
@@ -30,11 +33,15 @@ public:
         : LOGGED_IN_USER_ID(loggedInUserId), fileWithIncomes(nameFileWithIncomes), fileWithExpenses(nameFileWithExpenses) {
         incomes = fileWithIncomes.loadIncomesFromFile(LOGGED_IN_USER_ID);
         expenses = fileWithExpenses.loadExpensesFromFile(LOGGED_IN_USER_ID);
+
     }
     void showAllIncomes();
     void showAllExpenses();
     void addIncome();
     void addExpense();
+    void displayCurrentMonthBalance();
+    void displayPreviousMonthBalance();
+    void displaySelectedPeriodBalance();
 };
 
 #endif

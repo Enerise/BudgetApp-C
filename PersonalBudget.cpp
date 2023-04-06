@@ -86,3 +86,30 @@ void PersonalBudget::addExpense() {
         system("pause");
     }
 }
+
+void PersonalBudget::displayCurrentMonthBalance() {
+    if(userManager.isUserLoggedIn()) {
+        itemManager->displayCurrentMonthBalance();
+    } else {
+        cout << "Aby dodac adresata, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }
+}
+
+void PersonalBudget::displayPreviousMonthBalance() {
+    if(userManager.isUserLoggedIn()) {
+        itemManager->displayPreviousMonthBalance();
+    } else {
+        cout << "Aby dodac adresata, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }
+}
+
+void PersonalBudget::displaySelectedPeriodBalance() {
+    if(userManager.isUserLoggedIn()) {
+        itemManager->displaySelectedPeriodBalance();
+    } else {
+        cout << "Aby dodac adresata, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }
+}
