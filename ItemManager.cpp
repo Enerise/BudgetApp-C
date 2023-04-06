@@ -58,15 +58,12 @@ void ItemManager::addExpense(){
     showAllExpenses();
     system("pause");
     Expense expense;
-    //int lastIdExpense;
     system("cls");
     cout << " >>> DODAWANIE NOWEGO WYDATKU <<<" << endl << endl;
     expense = getNewExpenseData();
 
     expenses.push_back(expense);
     if(fileWithExpenses.addExpenseToFile(expense)) {
-        //lastIdExpense = fileWithExpenses.getLastExpenseId();
-        //fileWithExpenses.changeDateInFile(lastIdExpense);
         cout << "Nowy wydatek zostal dodany" << endl;
     }
 
@@ -130,6 +127,43 @@ void ItemManager::displayCurrentMonthBalance() {
     balanceManager.displayCurrentMonthBalance(incomes, expenses, currentMonth);
 }
 
+void ItemManager::displayPreviousMonthBalance() {
+    int previousMonthWithFirstDay = dateManager.getPreviousDateMonthWithFirstDay();
+    int previousMonthWithLastDay = dateManager.getPreviousDateMonthWithLastDay();
+    balanceManager.displayPreviousMonthBalanceAndSelectedPeriod(incomes, expenses, previousMonthWithFirstDay, previousMonthWithLastDay);
+}
+
+void ItemManager::displaySelectedPeriodBalance() {
+    string firstDateStr, lastDateStr;
+    int firstDate, lastDate;
+
+    while(true) {
+        cout << "wprowadz poczatkowa date dla ktorej utworzyc bilans w formacie rrrr-mm-dd" <<endl;
+        firstDateStr = AuxiliaryMethods::loadLine();
+        if(dateManager.isDateCorrect(firstDateStr))
+            break;
+        else
+            cout << "Data niepoprawna" << endl;
+    }
+
+    while(true) {
+        cout << "wprowadz koncowa date dla ktorej utworzyc bilans w formacie rrrr-mm-dd" <<endl;
+        lastDateStr = AuxiliaryMethods::loadLine();
+        if(dateManager.isDateCorrect(lastDateStr))
+            break;
+        else
+            cout << "Data niepoprawna" << endl;
+    }
+
+    firstDateStr = AuxiliaryMethods::removeDashesFromDate(firstDateStr);
+    firstDate = AuxiliaryMethods::convertStringtoInteger(firstDateStr);
+
+    lastDateStr = AuxiliaryMethods::removeDashesFromDate(lastDateStr);
+    lastDate = AuxiliaryMethods::convertStringtoInteger(lastDateStr);
+
+    balanceManager.displayPreviousMonthBalanceAndSelectedPeriod(incomes, expenses, firstDate, lastDate);
+}
+
 void ItemManager::showAllIncomes() {
 
     int vectorSize = incomes.size();
@@ -155,5 +189,4 @@ void ItemManager::showAllExpenses() {
         cout << "UAmoutn: " << expenses[i].getAmount() << endl;
         cout << "DateInt: " << expenses[i].getDateInt() << endl << endl;
     }
-
 }

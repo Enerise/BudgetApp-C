@@ -35,6 +35,41 @@ int DateManager::getCurrentDateWithoutDayAndDashes() {
     return currentDateWithoutDay;
 }
 
+int DateManager::getPreviousDateMonthWithFirstDay() {
+    string previousDateMonthStr = AuxiliaryMethods::convertIntegerToString(getCurrentYear());
+    string monthStr = AuxiliaryMethods::convertIntegerToString(getCurrentMonth() - 1);
+    int monthInt = AuxiliaryMethods::convertStringtoInteger(monthStr);
+
+    if( monthInt > 1)
+        previousDateMonthStr += '0' + monthStr + "01";
+    else
+        previousDateMonthStr += "1201";
+
+    int previousDateMonth = AuxiliaryMethods::convertStringtoInteger(previousDateMonthStr);
+
+    return previousDateMonth;
+}
+
+int DateManager::getPreviousDateMonthWithLastDay() {
+    string previousLastDayMonthStr = AuxiliaryMethods::convertIntegerToString(getCurrentYear());
+    string monthStr = AuxiliaryMethods::convertIntegerToString(getCurrentMonth() - 1);
+    previousLastDayMonthStr += '0' + monthStr;
+    int monthInt = AuxiliaryMethods::convertStringtoInteger(monthStr);
+
+    if (monthInt == 2) {
+        if (isLeap(monthInt)) previousLastDayMonthStr += "29";
+        else previousLastDayMonthStr += "28";
+    } else if (monthInt == 4 || monthInt == 6 || monthInt == 9 || monthInt == 11)
+        previousLastDayMonthStr += "30";
+     else if (monthInt == 1 || monthInt == 3 || monthInt == 5 || monthInt == 7 || monthInt == 8 || monthInt == 10 || monthInt == 12)
+        previousLastDayMonthStr += "31";
+
+    int previousLastDayMonth = AuxiliaryMethods::convertStringtoInteger(previousLastDayMonthStr);
+
+    return previousLastDayMonth;
+
+}
+
 bool DateManager::isDateCorrect(string date) {
 
     int yearFromUser = (date[0]-'0')*1000 + (date[1]-'0')*100 + (date[2]-'0')*10 + (date[3]-'0');

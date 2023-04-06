@@ -23,6 +23,10 @@ class BalanceManager {
     vector <Income> extractIncomesForCurrentMonth(vector <Income> incomes, int firstDate);
     vector <Expense> extractExpensesForCurrentMonth(vector <Expense> expenses, int firstDate);
 
+    vector <Income> extractIncomesForPreviousMonthAndSelectedPeriod(vector <Income> incomes, int firstDate, int lastDate);
+    vector <Expense> extractExpensesForPreviousMonthAndSelectedPeriod(vector <Expense> expenses, int firstDate, int lastDate);
+
+    void resetToDefaultValue();
     void showExtractedIncomes();
     void showExtractedExpenses();
 
@@ -34,9 +38,7 @@ public:
     };
 
     void displayCurrentMonthBalance(vector <Income> incomes, vector <Expense> expenses, int firstDate);
-
-
-
+    void displayPreviousMonthBalanceAndSelectedPeriod(vector <Income> incomes, vector <Expense> expenses, int firstDate, int lastDate);
 
 };
 

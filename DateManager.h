@@ -35,6 +35,8 @@ public:
     int getCurrentMonth();
     int getCurrentDay();
     int getCurrentDateWithoutDayAndDashes();
+    int getPreviousDateMonthWithFirstDay();
+    int getPreviousDateMonthWithLastDay();
     bool isDateCorrect(string date);
     string getCurrentDateWithoutDashes();
 

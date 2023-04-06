@@ -42,10 +42,10 @@ int main() {
                 personalBudget.displayCurrentMonthBalance();
                 break;
             case '4':
-                // ksiazkaAdresowa.wyswietlWszystkichAdresatow();
+                personalBudget.displayPreviousMonthBalance();
                 break;
             case '5':
-                //ksiazkaAdresowa.usunAdresata();
+                personalBudget.displaySelectedPeriodBalance();
                 break;
             case '7':
                 personalBudget.changePassword();
