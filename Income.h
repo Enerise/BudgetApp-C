@@ -23,8 +23,7 @@ public:
         this->dateInt = dateInt;
     }
 
-    bool operator < (const Income& str) const
-    {
+    bool operator < (const Income& str) const {
         return (dateInt < str.dateInt);
     }
 

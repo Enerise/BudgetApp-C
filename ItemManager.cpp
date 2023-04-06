@@ -2,8 +2,6 @@
 
 
 void ItemManager::addIncome() {
-    showAllIncomes();
-    system("pause");
     Income income;
 
     system("cls");
@@ -12,8 +10,6 @@ void ItemManager::addIncome() {
 
     incomes.push_back(income);
     if(fileWithIncomes.addIncomeToFile(income)) {
-        //lastIdIncome = fileWithIncomes.getLastIncomeId();
-        //fileWithIncomes.changeDateInFile(lastIdIncome);
         cout << "Nowy przychod zostal dodany" << endl;
     }
 
@@ -28,7 +24,7 @@ Income ItemManager::getNewIncomeData() {
     string dateStr, item;
     float amount;
     char choice;
-    //int dataInt;
+
 
     income.setIncomeId( fileWithIncomes.getLastIncomeId() + 1);
     income.setUserId(LOGGED_IN_USER_ID) ;
@@ -54,9 +50,7 @@ Income ItemManager::getNewIncomeData() {
     return income;
 }
 
-void ItemManager::addExpense(){
-    showAllExpenses();
-    system("pause");
+void ItemManager::addExpense() {
     Expense expense;
     system("cls");
     cout << " >>> DODAWANIE NOWEGO WYDATKU <<<" << endl << endl;
@@ -164,7 +158,7 @@ void ItemManager::displaySelectedPeriodBalance() {
     balanceManager.displayPreviousMonthBalanceAndSelectedPeriod(incomes, expenses, firstDate, lastDate);
 }
 
-void ItemManager::showAllIncomes() {
+/*void ItemManager::showAllIncomes() {
 
     int vectorSize = incomes.size();
     for (int i = 0; i < vectorSize; i++) {
@@ -189,4 +183,4 @@ void ItemManager::showAllExpenses() {
         cout << "UAmoutn: " << expenses[i].getAmount() << endl;
         cout << "DateInt: " << expenses[i].getDateInt() << endl << endl;
     }
-}
+}*/

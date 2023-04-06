@@ -118,7 +118,7 @@ float AuxiliaryMethods::convertStringToFloat(string number) {
 
 string AuxiliaryMethods::changeComaToDot(string amount) {
 
-   int sizeStr = amount.length();
+    int sizeStr = amount.length();
     for(int i = 0; i < sizeStr; i++ ) {
         if(amount[i] == ',')
             amount[i] = '.';

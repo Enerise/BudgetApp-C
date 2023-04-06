@@ -32,9 +32,9 @@ class BalanceManager {
 
 public:
     BalanceManager() {
-    sumOfIncomes = 0;
-    sumOfExpenses = 0;
-    balanceSummary = 0;
+        sumOfIncomes = 0;
+        sumOfExpenses = 0;
+        balanceSummary = 0;
     };
 
     void displayCurrentMonthBalance(vector <Income> incomes, vector <Expense> expenses, int firstDate);

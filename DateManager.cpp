@@ -8,6 +8,7 @@ void DateManager::calculateCurrentDate() {
     day = getCurrentDay();
     currentDate += day;
 }
+
 int DateManager::getCurrentYear() {
     year = gottime->tm_year + 1900;
     return year;
@@ -61,7 +62,7 @@ int DateManager::getPreviousDateMonthWithLastDay() {
         else previousLastDayMonthStr += "28";
     } else if (monthInt == 4 || monthInt == 6 || monthInt == 9 || monthInt == 11)
         previousLastDayMonthStr += "30";
-     else if (monthInt == 1 || monthInt == 3 || monthInt == 5 || monthInt == 7 || monthInt == 8 || monthInt == 10 || monthInt == 12)
+    else if (monthInt == 1 || monthInt == 3 || monthInt == 5 || monthInt == 7 || monthInt == 8 || monthInt == 10 || monthInt == 12)
         previousLastDayMonthStr += "31";
 
     int previousLastDayMonth = AuxiliaryMethods::convertStringtoInteger(previousLastDayMonthStr);

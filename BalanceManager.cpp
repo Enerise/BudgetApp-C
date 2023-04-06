@@ -1,7 +1,6 @@
 #include "BalanceManager.h"
 
-void BalanceManager::displayCurrentMonthBalance(vector <Income> incomes, vector <Expense> expenses, int firstDate)
-{
+void BalanceManager::displayCurrentMonthBalance(vector <Income> incomes, vector <Expense> expenses, int firstDate) {
     extractIncomesForCurrentMonth(incomes, firstDate);
     showExtractedIncomes();
     extractExpensesForCurrentMonth(expenses, firstDate);
@@ -101,8 +100,7 @@ void BalanceManager::resetToDefaultValue() {
     extractedExpenses.clear();
 }
 
-void BalanceManager::displayPreviousMonthBalanceAndSelectedPeriod(vector <Income> incomes, vector <Expense> expenses, int firstDate, int lastDate)
-{
+void BalanceManager::displayPreviousMonthBalanceAndSelectedPeriod(vector <Income> incomes, vector <Expense> expenses, int firstDate, int lastDate) {
     extractIncomesForPreviousMonthAndSelectedPeriod(incomes, firstDate, lastDate);
     showExtractedIncomes();
     extractExpensesForPreviousMonthAndSelectedPeriod(expenses, firstDate, lastDate);
